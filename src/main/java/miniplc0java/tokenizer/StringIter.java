@@ -107,6 +107,16 @@ public class StringIter {
         }
     }
 
+
+//    //自己试试，把指针回退一格
+//    public void backoff(){
+//        ptrNext = ptr;
+//        this.ptr=previousPos();
+//        char result = linesBuffer.get(ptrNext.row).charAt(ptrNext.col);
+//        System.out.println(result);
+//        this.peeked = Optional.of(result);
+//    }
+
     private char getNextChar() {
         if (isEOF()) {
             return 0;
