@@ -47,7 +47,7 @@ public class App {
             input = new FileInputStream(args[0]);
         }catch (FileNotFoundException e)
         {
-            System.err.println("shit找不到！！！！");
+            System.err.println("shit找不到！！！！"+args[0]);
         }
 
 //        try{
