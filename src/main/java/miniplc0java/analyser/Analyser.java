@@ -69,7 +69,7 @@ public final class Analyser {
     public void pushGiveDebug(Element ele){
 
         if(ele.isGlobal){
-            BigFunc taget=Funcs.get(0);
+            BigFunc taget=Funcs.get(Funcs.size()-1);
             taget.debug.add("Global"+taget.findLocal(ele));
             zhan.push(RealType.Addr);
         }
