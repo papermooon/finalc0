@@ -981,6 +981,11 @@ public final class Analyser {
                                     Funcs.get(Funcs.size()-1).debug.add("stackalloc1");
                                 }
                                 int paramnum=Funcs.get(isitAfuc).have_params.size();
+                                /////////////////1226
+                                if(Funcs.get(isitAfuc).Ftype!=RealType.Void)
+                                    paramnum--;
+                                /////////////////1226
+
                                 if(paramnum==0)
                                 { }
                                 else {
@@ -993,6 +998,11 @@ public final class Analyser {
                                 }
 
                                 Funcs.get(Funcs.size()-1).debug.add("call"+isitAfuc);
+
+                                //1226
+                                zhan.push(Funcs.get(isitAfuc).Ftype);
+                                //1226
+
                                 expect(TokenType.R_PAREN);
                             }
                     }

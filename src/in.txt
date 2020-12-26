@@ -1,16 +1,27 @@
-const a:int =5;
-let b:int =6;
-fn main()->void{
-let c:int =7;
-c =c +1;
-putint("str");
-if(1){
-c=8;
-}
-else{
-c=9;
+let i: int = 2;
+
+fn foo() -> int {
+    let i: int = 1;
+    putint(i);
+    putln();
+    return i;
 }
 
-while(1){
+fn bar() -> void {
+    putint(i);
+    putln();
+    i = i + 1;
 }
+
+fn main() -> void {
+    let i: int = 1;
+    putint(i);
+    putln();
+    putint(foo());
+    putln();
+    bar();
+    bar();
+    bar();
+    putint(foo());
+    putln();
 }
