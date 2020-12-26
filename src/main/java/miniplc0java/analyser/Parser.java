@@ -66,7 +66,10 @@ public class Parser {
                 expand(int2Bytes(0));
 
             //param slot
-            expand(int2Bytes(tmp.have_params.size()));
+            if(tmp.ShouldHaveAtLeastOneReturn!=0)
+            expand(int2Bytes(tmp.have_params.size()-1));
+            else
+                expand(int2Bytes(tmp.have_params.size()));
 
             //local slot
             if(tmp.Funname.equals("_start"))
@@ -287,8 +290,12 @@ public class Parser {
     }
 
     void checkINS(){
-        for(int i=0;i<INS.size();i++)
+
+        for(int i=0;i<INS.size();i++){
             System.out.print(byteToHex(INS.get(i)));
+            if(i%16==15)
+                System.out.println();
+        }
     }
 
     /**

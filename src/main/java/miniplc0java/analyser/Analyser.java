@@ -284,7 +284,7 @@ public final class Analyser {
 
         this.FFFFFFFF=LOL.INS;
 
-//        LOL.checkINS();
+        LOL.checkINS();
 
 
         expect(TokenType.EOF);
