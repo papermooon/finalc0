@@ -70,7 +70,10 @@ public final class Analyser {
 
         if(ele.isGlobal){
             BigFunc taget=Funcs.get(Funcs.size()-1);
-            taget.debug.add("Global"+taget.findLocal(ele));
+
+            BigFunc taget2=Funcs.get(0);
+
+            taget.debug.add("Global"+taget2.findLocal(ele));
             zhan.push(RealType.Addr);
         }
         else if(ele.isPara){
