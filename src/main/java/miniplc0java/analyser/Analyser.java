@@ -580,6 +580,9 @@ public final class Analyser {
 
             Funcs.get(Funcs.size()-1).debug.add("store.64");
 
+            zhan.popCheck(Funcs.get(Funcs.size()-1).Ftype);
+            zhan.popCheck(RealType.Addr);
+
         }
         expect(TokenType.SEMICOLON);
 
@@ -603,8 +606,9 @@ public final class Analyser {
                 throw new Error("对应函数类型return后面不应该有个expr"+Th.Ftype+Th.Funname+Th.ShouldHaveAtLeastOneReturn);
         }
 
-        zhan.popCheck(Funcs.get(Funcs.size()-1).Ftype);
-        zhan.popCheck(RealType.Addr);
+
+
+
     }
 
     //已完成
