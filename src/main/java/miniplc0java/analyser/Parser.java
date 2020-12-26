@@ -293,8 +293,7 @@ public class Parser {
 
         for(int i=0;i<INS.size();i++){
             System.out.print(byteToHex(INS.get(i)));
-            if(i%16==15)
-                System.out.println();
+
         }
     }
 

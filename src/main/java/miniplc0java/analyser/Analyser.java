@@ -38,7 +38,7 @@ public final class Analyser {
     //找到main函数是第几个函数
     public int findMainEntry(){
         var tmp=Standard.SYM.get(0);
-        int index=1;
+        int index=0;
         for(int i=0;i<tmp.size();i++)
         {
             if(tmp.get(i).isFuncName)
