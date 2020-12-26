@@ -580,8 +580,7 @@ public final class Analyser {
 
             Funcs.get(Funcs.size()-1).debug.add("store.64");
 
-            zhan.popCheck(Funcs.get(Funcs.size()-1).Ftype);
-            zhan.popCheck(RealType.Addr);
+
 
         }
         expect(TokenType.SEMICOLON);
@@ -607,7 +606,10 @@ public final class Analyser {
         }
 
 
-
+        if(Th.Ftype!=RealType.Void) {
+            zhan.popCheck(Funcs.get(Funcs.size() - 1).Ftype);
+            zhan.popCheck(RealType.Addr);
+        }
 
     }
 
