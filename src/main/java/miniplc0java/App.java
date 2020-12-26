@@ -40,20 +40,23 @@ public class App {
 //        var outputFileName = result.getString("output");
 
         InputStream input=System.in;
-        PrintStream output=System.out;
+
+
+
         try {
-            input = new FileInputStream("in.txt");
+            input = new FileInputStream(args[0]);
         }catch (FileNotFoundException e)
         {
             System.err.println("shit找不到！！！！");
         }
-        try{
-            output = new PrintStream(new FileOutputStream("out.txt"));
-        }
-        catch(FileNotFoundException e)
-        {
-            System.err.println("shit新建不了！！！！");
-        }
+
+//        try{
+//            output = new PrintStream(new FileOutputStream("out.txt"));
+//        }
+//        catch(FileNotFoundException e)
+//        {
+//            System.err.println("shit新建不了！！！！");
+//        }
 
 
 //        if (inputFileName.equals("-")) {
@@ -119,6 +122,10 @@ public class App {
             List<Instruction> instructions;
             try {
                 instructions = analyzer.analyse();
+
+                FileOutputStream output=new FileOutputStream(args[1]);
+                analyzer.WORK(output);
+
             } catch (Exception e) {
                 // 遇到错误不输出，直接退出
                 System.err.println(e+"fail");

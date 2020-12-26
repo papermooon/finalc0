@@ -6,6 +6,7 @@ public class Element {
     boolean isPara;
     boolean isConst;
     boolean isGlobal;
+    boolean isFuncName=false;
 
     @Override
     public String toString() {
@@ -15,6 +16,7 @@ public class Element {
                 ", isPara=" + isPara +
                 ", isConst=" + isConst +
                 ", isGlobal=" + isGlobal +
+                ", isFuncName=" + isFuncName +
                 '}';
     }
 }
