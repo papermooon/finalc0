@@ -65,6 +65,15 @@ public final class Analyser {
     }
 
 
+    public int GLOBALNUM(Element ele)throws Error{
+        int i=0;
+        for(;i<Standard.SYM.get(0).size();i++)
+            if(Standard.SYM.get(0).get(i).name.equals(ele.name))
+                return i;
+
+        throw new Error("cant find any named"+ele.name);
+    }
+
     //只考虑三种给的ele，全局变量，参数，局部变量
     public void pushGiveDebug(Element ele){
 
@@ -1065,7 +1074,8 @@ public final class Analyser {
             Standard.SYM.get(0).add(newEle);
             Funcs.get(0).have_local.add(newEle);
 
-            int offset=Funcs.get(0).findLocal(newEle);
+            int offset=GLOBALNUM(newEle);
+//            int offset=Funcs.get(0).findLocal(newEle);
             Funcs.get(Funcs.size()-1).debug.add("push"+offset);
 
             zhan.push(RealType.Int);

@@ -1,4 +1,2 @@
-
 fn main() -> void {
-  return ;
-}
+    putstr("this is a test
