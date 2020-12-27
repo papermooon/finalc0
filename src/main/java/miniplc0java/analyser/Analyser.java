@@ -186,10 +186,20 @@ public final class Analyser {
      * @throws TokenizeError
      */
     private Token peek() throws TokenizeError {
-        if (peekedToken == null) {
+//        if (peekedToken == null) {
+//            peekedToken = tokenizer.nextToken();
+//        }
+//        return peekedToken;
+
+        //1227
+        if (peekedToken == null||peekedToken.getTokenType()==TokenType.COMMENT) {
             peekedToken = tokenizer.nextToken();
+            while (peekedToken.getTokenType()==TokenType.COMMENT){
+                peekedToken = tokenizer.nextToken();
+            }
         }
         return peekedToken;
+        //1227
     }
 
     /**
@@ -199,13 +209,22 @@ public final class Analyser {
      * @throws TokenizeError
      */
     private Token next() throws TokenizeError {
-        if (peekedToken != null) {
+//        if (peekedToken != null) {
+//            var token = peekedToken;
+//            peekedToken = null;
+//            return token;
+//        } else {
+//            return tokenizer.nextToken();
+//        }
+        //1227
+        if (peekedToken != null&&peekedToken.getTokenType()!=TokenType.COMMENT) {
             var token = peekedToken;
             peekedToken = null;
             return token;
         } else {
             return tokenizer.nextToken();
         }
+        //1227
     }
 
     /**
