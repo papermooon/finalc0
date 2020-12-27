@@ -74,6 +74,17 @@ public final class Analyser {
         throw new Error("cant find any named"+ele.name);
     }
 
+    public void CHECKSYM(Element ele)throws Error{
+        int j=Standard.SYM.size()-1;
+        for(;j>=0;j--) {
+            int i = 0;
+            for (; i < Standard.SYM.get(j).size(); i++)
+                if (Standard.SYM.get(j).get(i).name.equals(ele.name))
+                    throw new Error("find 2 named"+ele.name);
+        }
+       return;
+    }
+
     //只考虑三种给的ele，全局变量，参数，局部变量
     public void pushGiveDebug(Element ele){
 
@@ -713,6 +724,11 @@ public final class Analyser {
         newEle.isGlobal=Standard.level_now==0?true:false;
         newEle.isPara=false;
         newEle.isConst=false;
+
+        //1227
+        CHECKSYM(newEle);
+        //1227
+
         Standard.SYM.get(Standard.level_now).add(newEle);
         System.out.println(newEle+"当前层数"+Standard.level_now);
 
@@ -755,6 +771,11 @@ public final class Analyser {
         newEle.isGlobal=Standard.level_now==0?true:false;
         newEle.isPara=false;
         newEle.isConst=true;
+
+        //1227
+        CHECKSYM(newEle);
+        //1227
+
         Standard.SYM.get(Standard.level_now).add(newEle);
         System.out.println(newEle+"当前层数"+Standard.level_now);
 
