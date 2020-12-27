@@ -8,6 +8,8 @@ public class Element {
     boolean isGlobal;
     boolean isFuncName=false;
 
+    int levelshit;
+
     @Override
     public String toString() {
         return "Element{" +

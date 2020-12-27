@@ -75,13 +75,23 @@ public final class Analyser {
     }
 
     public void CHECKSYM(Element ele)throws Error{
-        int j=Standard.SYM.size()-1;
-            int i = 0;
-            for (; i < Standard.SYM.get(j).size(); i++)
-                if (Standard.SYM.get(j).get(i).name.equals(ele.name))
-                    throw new Error("find 2 named"+ele.name);
+//        int j=Standard.SYM.size()-1;
+//            int i = 0;
+//            for (; i < Standard.SYM.get(j).size(); i++)
+//                if (Standard.SYM.get(j).get(i).name.equals(ele.name))
+//                    throw new Error("find 2 named"+ele.name);
+//
+//       return;
 
-       return;
+        //1227
+        int j= Standard.level_now;
+        int i = 0;
+        for (; i < Standard.SYM.get(j).size(); i++)
+            if (Standard.SYM.get(j).get(i).name.equals(ele.name))
+                throw new Error("find 2 named"+ele.name);
+
+        return;
+        //1227
     }
 
     //只考虑三种给的ele，全局变量，参数，局部变量
@@ -105,7 +115,7 @@ public final class Analyser {
         }
         else{
             BigFunc taget=Funcs.get(Funcs.size()-1);
-            taget.debug.add("Local"+taget.findLocal(ele));
+            taget.debug.add("Local"+taget.findLocal(ele,ele.levelshit));
             zhan.push(RealType.Addr);
         }
     }
@@ -150,7 +160,18 @@ public final class Analyser {
     //传入一个名字的字符串，根据这个字符串在整个符号表里找到对应的element
     public Element fromSignTableReturnElem(String name) throws Error{
 
-        for(int i=Standard.SYM.size()-1;i>=0;i--){
+//        for(int i=Standard.SYM.size()-1;i>=0;i--){
+//            var en=Standard.SYM.get(i);
+//            for(int j=0;j<en.size();j++){
+//                if(en.get(j).name.equals(name))
+//                {
+//                    return en.get(j);
+//                }
+//            }
+//        }
+//        throw new Error("没有在符号表找到这个量，应该是没定义:"+name);
+        //1227
+        for(int i= Standard.level_now;i>=0;i--){
             var en=Standard.SYM.get(i);
             for(int j=0;j<en.size();j++){
                 if(en.get(j).name.equals(name))
@@ -160,6 +181,8 @@ public final class Analyser {
             }
         }
         throw new Error("没有在符号表找到这个量，应该是没定义:"+name);
+        //1227
+
     }
 
     /** 当前偷看的 token */
@@ -742,6 +765,7 @@ public final class Analyser {
         newEle.isGlobal=Standard.level_now==0?true:false;
         newEle.isPara=false;
         newEle.isConst=false;
+        newEle.levelshit=Standard.level_now;
 
         //1227
         CHECKSYM(newEle);
@@ -789,6 +813,7 @@ public final class Analyser {
         newEle.isGlobal=Standard.level_now==0?true:false;
         newEle.isPara=false;
         newEle.isConst=true;
+        newEle.levelshit=Standard.level_now;
 
         //1227
         CHECKSYM(newEle);
@@ -1091,6 +1116,11 @@ public final class Analyser {
                         if(tar.isConst)
                             throw new Error("常量不能再被赋值了大叔...");
                     }
+
+                    Element gongjvren=new Element();
+                    gongjvren.levelshit= Standard.level_now;
+                    gongjvren.name=tar.name;
+                    gongjvren.type=tar.type;
 
                     //左边是加载地址，右边是加载值
                     pushGiveDebug(tar);
