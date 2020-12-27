@@ -200,6 +200,12 @@ public class Tokenizer {
 
                     while(end==1)
                     {
+
+                        //1227
+                        if(it.isEOF())
+                            throw new Error("分析错误");
+                        //1227
+
                         if(m=='\\')
                         {
                             char temp=it.nextChar();

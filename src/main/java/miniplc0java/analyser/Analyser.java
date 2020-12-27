@@ -1029,7 +1029,7 @@ public final class Analyser {
                                     paramnum--;
                                 /////////////////1226
 
-                                zhan.gothrough();
+//                                zhan.gothrough();
 
                                 if(paramnum==0)
                                 { }
@@ -1054,7 +1054,7 @@ public final class Analyser {
                                 zhan.push(Funcs.get(isitAfuc).Ftype);
                                 //1226
 
-                                zhan.gothrough();
+//                                zhan.gothrough();
 
                                 expect(TokenType.R_PAREN);
                             }
@@ -1079,7 +1079,7 @@ public final class Analyser {
                         Funcs.get(Funcs.size()-1).debug.add("load.64");
                         zhan.popCheck(RealType.Addr);
                         zhan.push(checkElementType(tar));
-                        System.out.println("我把地址弹出去了"+tar.name+key.getStartPos());
+//                        System.out.println("我把地址弹出去了"+tar.name+key.getStartPos());
                     }
 
 
