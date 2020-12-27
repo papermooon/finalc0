@@ -26,7 +26,7 @@ public class Parser {
             else
                 expand(new byte[]{0x00});
 
-            if(tmp.isFuncName) {
+            if(tmp.isFuncName||tmp.type.equals("String")) {
                 expand(int2Bytes(tmp.name.length()));
                 expand(tmp.name.getBytes());
             }
