@@ -822,7 +822,9 @@ public final class Analyser {
                 zhan.popCheck(RealType.Addr);
             }
             else
-                throw new Error("栈上的类型不对呀！"+x1+x2);
+            {
+                throw new Error("栈上的类型不对呀！"+x1+x2+peek());
+            }
         }
 
     }
@@ -1027,6 +1029,8 @@ public final class Analyser {
                                     paramnum--;
                                 /////////////////1226
 
+                                zhan.gothrough();
+
                                 if(paramnum==0)
                                 { }
                                 else {
@@ -1038,11 +1042,19 @@ public final class Analyser {
                                     }
                                 }
 
+                                //1227
+                                for(int i=0;i<paramnum;i++)
+                                    zhan.pop();
+                                //1227
+
+
                                 Funcs.get(Funcs.size()-1).debug.add("call"+isitAfuc);
 
                                 //1226
                                 zhan.push(Funcs.get(isitAfuc).Ftype);
                                 //1226
+
+                                zhan.gothrough();
 
                                 expect(TokenType.R_PAREN);
                             }
@@ -1067,6 +1079,7 @@ public final class Analyser {
                         Funcs.get(Funcs.size()-1).debug.add("load.64");
                         zhan.popCheck(RealType.Addr);
                         zhan.push(checkElementType(tar));
+                        System.out.println("我把地址弹出去了"+tar.name+key.getStartPos());
                     }
 
 

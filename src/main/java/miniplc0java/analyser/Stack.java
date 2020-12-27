@@ -8,7 +8,7 @@ public class Stack {
     public ArrayList<RealType> stack = new ArrayList<>();
 
     public void gothrough(){
-        for(int i=0;i<stack.size();i++)
+        for(int i=stack.size()-1;i>=0;i--)
             System.out.println(stack.get(i));
     }
 
