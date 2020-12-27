@@ -891,13 +891,13 @@ public final class Analyser {
             }
             else if(key.getTokenType()==TokenType.LE)
             {
-                Funcs.get(Funcs.size()-1).debug.add("set.lt");
+                Funcs.get(Funcs.size()-1).debug.add("set.gt");
                 WhileList.set(0,-1);
                 FalseJump=false;
             }
             else if(key.getTokenType()==TokenType.GE)
             {
-                Funcs.get(Funcs.size()-1).debug.add("set.gt");
+                Funcs.get(Funcs.size()-1).debug.add("set.lt");
                 WhileList.set(0,-1);
                 FalseJump=false;
             }
