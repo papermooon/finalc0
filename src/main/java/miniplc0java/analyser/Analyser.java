@@ -76,12 +76,11 @@ public final class Analyser {
 
     public void CHECKSYM(Element ele)throws Error{
         int j=Standard.SYM.size()-1;
-        for(;j>=0;j--) {
             int i = 0;
             for (; i < Standard.SYM.get(j).size(); i++)
                 if (Standard.SYM.get(j).get(i).name.equals(ele.name))
                     throw new Error("find 2 named"+ele.name);
-        }
+
        return;
     }
 
